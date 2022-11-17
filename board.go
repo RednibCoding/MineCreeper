@@ -151,13 +151,13 @@ func (b *Board) draw() {
 					if b.cells[idx] <= 1 {
 						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(200, 200, 200, 255))
 					} else if b.cells[idx] <= 2 {
-						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(0, 180, 255, 255))
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(0, 160, 200, 255))
 					} else if b.cells[idx] <= 3 {
-						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(0, 255, 180, 255))
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(0, 200, 160, 255))
 					} else if b.cells[idx] <= 4 {
-						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(255, 180, 0, 255))
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(200, 160, 0, 255))
 					} else if b.cells[idx] <= 8 {
-						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(255, 80, 80, 255))
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(200, 80, 80, 255))
 					}
 					// rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(255, 203, 0, 255))
 				}
