@@ -39,11 +39,11 @@ func newBoard(width, height, numBombs int) *Board {
 		height = 7
 	}
 
-	board := &Board{width: width, height: height, cellSize: 40, bombCell: -1, emptyCell: 0, xOffset: 10, yOffset: 50}
+	board := &Board{width: width, height: height, cellSize: 32, bombCell: -1, emptyCell: 0, xOffset: 10, yOffset: 50}
 
-	// Number of bombs cannot be more than 75% and less thatn 25% of the board
-	if numBombs > int(float32(width*height)*0.75) {
-		numBombs = int(float32(width*height) * 0.75)
+	// Number of bombs cannot be more than 60% and less thatn 10% of the board
+	if numBombs > int(float32(width*height)*0.60) {
+		numBombs = int(float32(width*height) * 0.60)
 	} else if numBombs < int(float32(width*height)*0.10) {
 		numBombs = int(float32(width*height) * 0.10)
 	}
@@ -145,9 +145,21 @@ func (b *Board) draw() {
 					rl.DrawTexture(dirtBlock, int32(x*b.cellSize+b.xOffset), int32(y*b.cellSize+b.yOffset), rl.NewColor(100, 100, 100, 200))
 				}
 				if b.cells[idx] > b.emptyCell {
-					nx := int32(x*b.cellSize+(b.cellSize/2)) - rl.MeasureText(strconv.Itoa(b.cells[idx]), 26)/2 + int32(b.xOffset)
+					nx := int32(x*b.cellSize+(b.cellSize/2)) - rl.MeasureText(strconv.Itoa(b.cells[idx]), 20)/2 + int32(b.xOffset)
 					ny := int32(y*b.cellSize+10) + int32(b.yOffset)
-					rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-2, 26, rl.Gold)
+
+					if b.cells[idx] <= 1 {
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(200, 200, 200, 255))
+					} else if b.cells[idx] <= 2 {
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(0, 180, 255, 255))
+					} else if b.cells[idx] <= 3 {
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(0, 255, 180, 255))
+					} else if b.cells[idx] <= 4 {
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(255, 180, 0, 255))
+					} else if b.cells[idx] <= 8 {
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(255, 80, 80, 255))
+					}
+					// rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(255, 203, 0, 255))
 				}
 			}
 		}

@@ -30,19 +30,24 @@ var gameSizeMediumBtn *Button = NewButton("medium", 122, 120, 70, 30, rl.White, 
 var gameSizeLargeBtn *Button = NewButton("large", 202, 120, 70, 30, rl.White, rl.Gold)
 var gameSizeHugeBtn *Button = NewButton("huge", 282, 120, 70, 30, rl.White, rl.Gold)
 
-var bombAmountSmallBtn *Button = NewButton("10%", 42, 240, 70, 30, rl.White, rl.Gold)
-var bombAmountMediumBtn *Button = NewButton("25%", 122, 240, 70, 30, rl.White, rl.Gold)
-var bombAmountLargeBtn *Button = NewButton("50%", 202, 240, 70, 30, rl.White, rl.Gold)
-var bombAmountHugeBtn *Button = NewButton("65%", 282, 240, 70, 30, rl.White, rl.Gold)
+var bombAmount10Btn *Button = NewButton("10%", 42, 240, 70, 30, rl.White, rl.Gold)
+var bombAmount20Btn *Button = NewButton("20%", 122, 240, 70, 30, rl.White, rl.Gold)
+var bombAmount30Btn *Button = NewButton("30%", 202, 240, 70, 30, rl.White, rl.Gold)
+var bombAmount40Btn *Button = NewButton("40%", 282, 240, 70, 30, rl.White, rl.Gold)
+
+var bombAmount45Btn *Button = NewButton("45%", 42, 280, 70, 30, rl.White, rl.Gold)
+var bombAmount50Btn *Button = NewButton("50%", 122, 280, 70, 30, rl.White, rl.Gold)
+var bombAmount55Btn *Button = NewButton("55%", 202, 280, 70, 30, rl.White, rl.Gold)
+var bombAmount60Btn *Button = NewButton("60%", 282, 280, 70, 30, rl.White, rl.Gold)
 
 var startNewGameBtn *Button = NewButton("Go", 160, 350, 70, 30, rl.White, rl.Gold)
 
 func main() {
-	rl.InitWindow(800, 450, "MineCreeper v1.0")
+	rl.InitWindow(800, 450, "MineCreeper v1.0.1")
 	rl.SetTargetFPS(20)
 	loadAssets()
 	gameSizeSmallBtn.Selected = true
-	bombAmountSmallBtn.Selected = true
+	bombAmount10Btn.Selected = true
 
 	board := createNewBoard()
 
@@ -123,34 +128,94 @@ func main() {
 
 			// Board size
 			rl.DrawText("Creeper amount:", 20, 200, 22, rl.Gold)
-			bombAmountSmallBtn.Draw()
-			bombAmountMediumBtn.Draw()
-			bombAmountLargeBtn.Draw()
-			bombAmountHugeBtn.Draw()
+			bombAmount10Btn.Draw()
+			bombAmount20Btn.Draw()
+			bombAmount30Btn.Draw()
+			bombAmount40Btn.Draw()
+			bombAmount45Btn.Draw()
+			bombAmount50Btn.Draw()
+			bombAmount55Btn.Draw()
+			bombAmount60Btn.Draw()
 
-			if bombAmountSmallBtn.Pressed() {
-				bombAmountSmallBtn.Selected = true
-				bombAmountMediumBtn.Selected = false
-				bombAmountLargeBtn.Selected = false
-				bombAmountHugeBtn.Selected = false
+			if bombAmount10Btn.Pressed() {
+				bombAmount10Btn.Selected = true
+				bombAmount20Btn.Selected = false
+				bombAmount30Btn.Selected = false
+				bombAmount40Btn.Selected = false
+				bombAmount45Btn.Selected = false
+				bombAmount50Btn.Selected = false
+				bombAmount55Btn.Selected = false
+				bombAmount60Btn.Selected = false
 			}
-			if bombAmountMediumBtn.Pressed() {
-				bombAmountMediumBtn.Selected = true
-				bombAmountSmallBtn.Selected = false
-				bombAmountLargeBtn.Selected = false
-				bombAmountHugeBtn.Selected = false
+			if bombAmount20Btn.Pressed() {
+				bombAmount10Btn.Selected = false
+				bombAmount20Btn.Selected = true
+				bombAmount30Btn.Selected = false
+				bombAmount40Btn.Selected = false
+				bombAmount45Btn.Selected = false
+				bombAmount50Btn.Selected = false
+				bombAmount55Btn.Selected = false
+				bombAmount60Btn.Selected = false
 			}
-			if bombAmountLargeBtn.Pressed() {
-				bombAmountLargeBtn.Selected = true
-				bombAmountSmallBtn.Selected = false
-				bombAmountMediumBtn.Selected = false
-				bombAmountHugeBtn.Selected = false
+			if bombAmount30Btn.Pressed() {
+				bombAmount10Btn.Selected = false
+				bombAmount20Btn.Selected = false
+				bombAmount30Btn.Selected = true
+				bombAmount40Btn.Selected = false
+				bombAmount45Btn.Selected = false
+				bombAmount50Btn.Selected = false
+				bombAmount55Btn.Selected = false
+				bombAmount60Btn.Selected = false
 			}
-			if bombAmountHugeBtn.Pressed() {
-				bombAmountHugeBtn.Selected = true
-				bombAmountLargeBtn.Selected = false
-				bombAmountSmallBtn.Selected = false
-				bombAmountMediumBtn.Selected = false
+			if bombAmount40Btn.Pressed() {
+				bombAmount10Btn.Selected = false
+				bombAmount20Btn.Selected = false
+				bombAmount30Btn.Selected = false
+				bombAmount40Btn.Selected = true
+				bombAmount45Btn.Selected = false
+				bombAmount50Btn.Selected = false
+				bombAmount55Btn.Selected = false
+				bombAmount60Btn.Selected = false
+			}
+			if bombAmount45Btn.Pressed() {
+				bombAmount10Btn.Selected = false
+				bombAmount20Btn.Selected = false
+				bombAmount30Btn.Selected = false
+				bombAmount40Btn.Selected = false
+				bombAmount45Btn.Selected = true
+				bombAmount50Btn.Selected = false
+				bombAmount55Btn.Selected = false
+				bombAmount60Btn.Selected = false
+			}
+			if bombAmount50Btn.Pressed() {
+				bombAmount10Btn.Selected = false
+				bombAmount20Btn.Selected = false
+				bombAmount30Btn.Selected = false
+				bombAmount40Btn.Selected = false
+				bombAmount45Btn.Selected = false
+				bombAmount50Btn.Selected = true
+				bombAmount55Btn.Selected = false
+				bombAmount60Btn.Selected = false
+			}
+			if bombAmount55Btn.Pressed() {
+				bombAmount10Btn.Selected = false
+				bombAmount20Btn.Selected = false
+				bombAmount30Btn.Selected = false
+				bombAmount40Btn.Selected = false
+				bombAmount45Btn.Selected = false
+				bombAmount50Btn.Selected = false
+				bombAmount55Btn.Selected = true
+				bombAmount60Btn.Selected = false
+			}
+			if bombAmount60Btn.Pressed() {
+				bombAmount10Btn.Selected = false
+				bombAmount20Btn.Selected = false
+				bombAmount30Btn.Selected = false
+				bombAmount40Btn.Selected = false
+				bombAmount45Btn.Selected = false
+				bombAmount50Btn.Selected = false
+				bombAmount55Btn.Selected = false
+				bombAmount60Btn.Selected = true
 			}
 
 			startNewGameBtn.Draw()
@@ -166,13 +231,13 @@ func main() {
 
 func drawGameGui(board *Board) {
 	// Number of bombs
-	rl.DrawTexture(signTex, 0, int32(board.yOffset-board.cellSize), rl.White)
+	rl.DrawTexture(signTex, 0, int32(board.yOffset-40), rl.White)
 	numBombs := board.numBombs - board.getNumFlaggedCells()
-	rl.DrawText(strconv.Itoa(numBombs), int32(board.xOffset*2)+int32(board.cellSize)-rl.MeasureText(strconv.Itoa(numBombs), 24)/2, int32(24/2), 24, rl.Gold)
+	rl.DrawText(strconv.Itoa(numBombs), 65-rl.MeasureText(strconv.Itoa(numBombs), 24)/2, int32(24/2), 24, rl.Gold)
 	// Time
-	timeSignX := int32((board.width*board.cellSize - board.cellSize*2) - board.xOffset*3)
-	rl.DrawTexture(signTex, timeSignX, int32(board.yOffset-board.cellSize), rl.White)
-	rl.DrawText(strconv.Itoa(int(board.elapsedSeconds)), timeSignX+int32(board.xOffset*2)+int32(board.cellSize)-rl.MeasureText(strconv.Itoa(int(board.elapsedSeconds)), 24)/2, int32(24/2), 24, rl.Gold)
+	timeSignX := int32(board.width*board.cellSize) - 110
+	rl.DrawTexture(signTex, timeSignX, int32(board.yOffset-40), rl.White)
+	rl.DrawText(strconv.Itoa(int(board.elapsedSeconds)), timeSignX+60-rl.MeasureText(strconv.Itoa(int(board.elapsedSeconds)), 24)/2, int32(24/2), 24, rl.Gold)
 	// New game button
 	rl.DrawTexture(headTex, int32(((board.width*board.cellSize)/2)+board.xOffset-board.cellSize/2), int32(board.yOffset-board.cellSize)-5, rl.White)
 }
@@ -207,24 +272,32 @@ func createNewBoard() *Board {
 		boardWidth = 8
 		boardHeight = 8
 	} else if gameSizeMediumBtn.Selected {
-		boardWidth = 12
-		boardHeight = 12
+		boardWidth = 16
+		boardHeight = 16
 	} else if gameSizeLargeBtn.Selected {
-		boardWidth = 20
-		boardHeight = 20
+		boardWidth = 28
+		boardHeight = 28
 	} else if gameSizeHugeBtn.Selected {
-		boardWidth = 45
-		boardHeight = 25
+		boardWidth = 55
+		boardHeight = 30
 	}
 
-	if bombAmountSmallBtn.Selected {
+	if bombAmount10Btn.Selected {
 		bombAmount = int(float32(boardWidth*boardHeight) * 0.10)
-	} else if bombAmountMediumBtn.Selected {
-		bombAmount = int(float32(boardWidth*boardHeight) * 0.25)
-	} else if bombAmountLargeBtn.Selected {
+	} else if bombAmount20Btn.Selected {
+		bombAmount = int(float32(boardWidth*boardHeight) * 0.20)
+	} else if bombAmount30Btn.Selected {
+		bombAmount = int(float32(boardWidth*boardHeight) * 0.30)
+	} else if bombAmount40Btn.Selected {
+		bombAmount = int(float32(boardWidth*boardHeight) * 0.40)
+	} else if bombAmount45Btn.Selected {
+		bombAmount = int(float32(boardWidth*boardHeight) * 0.45)
+	} else if bombAmount50Btn.Selected {
 		bombAmount = int(float32(boardWidth*boardHeight) * 0.50)
-	} else if bombAmountHugeBtn.Selected {
-		bombAmount = int(float32(boardWidth*boardHeight) * 0.65)
+	} else if bombAmount55Btn.Selected {
+		bombAmount = int(float32(boardWidth*boardHeight) * 0.55)
+	} else if bombAmount60Btn.Selected {
+		bombAmount = int(float32(boardWidth*boardHeight) * 0.60)
 	}
 
 	gameState = GAMESTATE_IN_PROGRESS
