@@ -18,3 +18,5 @@ A Minesweeper clone in the Minecraft universe written in go and raylib
 > Note: To prevent the console window from popping up on Windows add `-H windowsgui` to the linker flags -> `go build -ldflags "-s -w -H windowsgui" .`
 
 > Note: If you run into issues distributing the game on windows (`libwinpthread-1.dll not found`) try to build with CGO_LDFLAGS to statically link the files: `$env:CGO_LDFLAGS = "-static-libgcc -static -lpthread"; go build -ldflags "-s -w -H windowsgui" .`
+
+Issue has been discussed here: [raylib-go issues](https://github.com/gen2brain/raylib-go/issues/135#issuecomment-895562752)
