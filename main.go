@@ -43,7 +43,7 @@ var bombAmount45Btn *Button = NewButton("45%", 282, 280, 70, 30, rl.White, rl.Go
 var startNewGameBtn *Button = NewButton("Go", 160, 350, 70, 30, rl.White, rl.Gold)
 
 func main() {
-	rl.InitWindow(800, 450, "MineCreeper v1.0.3")
+	rl.InitWindow(800, 450, "MineCreeper v1.0.4")
 	rl.SetTargetFPS(20)
 	loadAssets()
 	gameSizeSmallBtn.Selected = true

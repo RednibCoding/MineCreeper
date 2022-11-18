@@ -99,9 +99,6 @@ func (b *Board) update() {
 		} else if b.cellStates[cellIdx] == CELL_FLAGGED {
 			b.cellStates[cellIdx] = CELL_HIDDEN
 		}
-		if b.isGameWon() {
-			gameState = GAMESTATE_GAME_WON
-		}
 	}
 
 }
@@ -113,15 +110,7 @@ func (b *Board) isGameWon() bool {
 			numUnrevealedCells++
 		}
 	}
-
-	bombCells := b.getBombCells()
-	numBombsFlagged := 0
-	for j := 0; j < len(bombCells); j++ {
-		if b.cellStates[bombCells[j]] == CELL_FLAGGED {
-			numBombsFlagged++
-		}
-	}
-	return (numUnrevealedCells == b.numBombs) || (numBombsFlagged == b.numBombs && b.getNumFlaggedCells() == b.numBombs)
+	return numUnrevealedCells == b.numBombs
 }
 
 func (b *Board) draw() {
@@ -175,7 +164,6 @@ func (b *Board) draw() {
 					} else if b.cells[idx] <= 8 {
 						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(200, 80, 80, 255))
 					}
-					// rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(255, 203, 0, 255))
 				}
 			}
 		}
@@ -232,16 +220,6 @@ func (b *Board) getNumFlaggedCells() int {
 		}
 	}
 	return numFlaggedCells
-}
-
-func (b *Board) getBombCells() []int {
-	var bombCells = make([]int, 0)
-	for i := 0; i < len(b.cells); i++ {
-		if b.cells[i] == b.bombCell {
-			bombCells = append(bombCells, i)
-		}
-	}
-	return bombCells
 }
 
 func (b *Board) getNeighbors(cellIdx int) []int {
