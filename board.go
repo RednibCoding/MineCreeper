@@ -39,7 +39,7 @@ func newBoard(width, height, numBombs int) *Board {
 		height = 7
 	}
 
-	board := &Board{width: width, height: height, cellSize: 32, bombCell: -1, emptyCell: 0, xOffset: 10, yOffset: 50}
+	board := &Board{width: width, height: height, cellSize: 64, bombCell: -1, emptyCell: 0, xOffset: 10, yOffset: 64}
 
 	// Number of bombs cannot be more than 60% and less thatn 10% of the board
 	if numBombs > int(float32(width*height)*0.60) {
@@ -114,6 +114,7 @@ func (b *Board) isGameWon() bool {
 }
 
 func (b *Board) draw() {
+	fontSize := int32(b.cellSize / 2)
 	for y := 0; y < b.height; y++ {
 		for x := 0; x < b.width; x++ {
 			idx := x + y*b.width
@@ -154,15 +155,15 @@ func (b *Board) draw() {
 					ny := int32(y*b.cellSize+10) + int32(b.yOffset)
 
 					if b.cells[idx] <= 1 {
-						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(200, 200, 200, 255))
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-3, ny+6, fontSize, rl.NewColor(200, 200, 200, 255))
 					} else if b.cells[idx] <= 2 {
-						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(0, 160, 200, 255))
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-3, ny+6, fontSize, rl.NewColor(0, 160, 200, 255))
 					} else if b.cells[idx] <= 3 {
-						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(0, 200, 160, 255))
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-3, ny+6, fontSize, rl.NewColor(0, 200, 160, 255))
 					} else if b.cells[idx] <= 4 {
-						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(200, 160, 0, 255))
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-3, ny+6, fontSize, rl.NewColor(200, 160, 0, 255))
 					} else if b.cells[idx] <= 8 {
-						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-2, ny-4, 20, rl.NewColor(200, 80, 80, 255))
+						rl.DrawText(strconv.Itoa((b.cells[idx])), nx-3, ny+6, fontSize, rl.NewColor(200, 80, 80, 255))
 					}
 				}
 			}

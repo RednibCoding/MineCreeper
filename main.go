@@ -43,7 +43,7 @@ var bombAmount45Btn *Button = NewButton("45%", 282, 280, 70, 30, rl.White, rl.Go
 var startNewGameBtn *Button = NewButton("Go", 160, 350, 70, 30, rl.White, rl.Gold)
 
 func main() {
-	rl.InitWindow(800, 450, "MineCreeper v1.0.4")
+	rl.InitWindow(800, 450, "MineCreeper v1.0.5")
 	rl.SetTargetFPS(20)
 	loadAssets()
 	gameSizeSmallBtn.Selected = true
@@ -230,14 +230,13 @@ func main() {
 }
 
 func drawGameGui(board *Board) {
+	fontSize := int32(board.cellSize / 2)
 	// Number of bombs
-	rl.DrawTexture(signTex, 0, int32(board.yOffset-40), rl.White)
 	numBombs := board.numBombs - board.getNumFlaggedCells()
-	rl.DrawText(strconv.Itoa(numBombs), 65-rl.MeasureText(strconv.Itoa(numBombs), 24)/2, int32(24/2), 24, rl.Gold)
+	rl.DrawText(strconv.Itoa(numBombs), 100-rl.MeasureText(strconv.Itoa(numBombs), fontSize)/2, int32(fontSize/2), fontSize, rl.Gold)
 	// Time
-	timeSignX := int32(board.width*board.cellSize) - 110
-	rl.DrawTexture(signTex, timeSignX, int32(board.yOffset-40), rl.White)
-	rl.DrawText(strconv.Itoa(int(board.elapsedSeconds)), timeSignX+60-rl.MeasureText(strconv.Itoa(int(board.elapsedSeconds)), 24)/2, int32(24/2), 24, rl.Gold)
+	timeX := int32(board.width*board.cellSize) - 100 + int32(board.xOffset*2)
+	rl.DrawText(strconv.Itoa(int(board.elapsedSeconds)), timeX-rl.MeasureText(strconv.Itoa(int(board.elapsedSeconds)), fontSize)/2, int32(fontSize/2), fontSize, rl.Gold)
 	// New game button
 	rl.DrawTexture(headTex, int32(((board.width*board.cellSize)/2)+board.xOffset-board.cellSize/2), int32(board.yOffset-board.cellSize)-5, rl.White)
 }
@@ -269,17 +268,17 @@ func createNewBoard() *Board {
 	bombAmount := 0
 
 	if gameSizeSmallBtn.Selected {
-		boardWidth = 8
-		boardHeight = 8
+		boardWidth = 7
+		boardHeight = 7
 	} else if gameSizeMediumBtn.Selected {
-		boardWidth = 16
-		boardHeight = 16
+		boardWidth = 12
+		boardHeight = 12
 	} else if gameSizeLargeBtn.Selected {
-		boardWidth = 28
-		boardHeight = 28
+		boardWidth = 17
+		boardHeight = 17
 	} else if gameSizeHugeBtn.Selected {
-		boardWidth = 55
-		boardHeight = 30
+		boardWidth = 33
+		boardHeight = 19
 	}
 
 	if bombAmount10Btn.Selected {

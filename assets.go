@@ -18,9 +18,6 @@ var bombBlockPath embed.FS
 //go:embed assets/trap.png
 var trapBlockPath embed.FS
 
-//go:embed assets/sign.png
-var signPath embed.FS
-
 //go:embed assets/head.png
 var headPath embed.FS
 
@@ -28,7 +25,6 @@ var dirtBlock rl.Texture2D
 var grassBlock rl.Texture2D
 var bombBlock rl.Texture2D
 var trapBlock rl.Texture2D
-var signTex rl.Texture2D
 var headTex rl.Texture2D
 
 func loadAssets() {
@@ -47,10 +43,6 @@ func loadAssets() {
 	trapData, _ := trapBlockPath.ReadFile("assets/trap.png")
 	trapImage := rl.LoadImageFromMemory(".png", trapData, int32(len(trapData)))
 	trapBlock = rl.LoadTextureFromImage(trapImage)
-
-	signData, _ := signPath.ReadFile("assets/sign.png")
-	signImage := rl.LoadImageFromMemory(".png", signData, int32(len(signData)))
-	signTex = rl.LoadTextureFromImage(signImage)
 
 	headData, _ := headPath.ReadFile("assets/head.png")
 	headImage := rl.LoadImageFromMemory(".png", headData, int32(len(headData)))
