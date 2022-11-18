@@ -31,19 +31,19 @@ var gameSizeLargeBtn *Button = NewButton("large", 202, 120, 70, 30, rl.White, rl
 var gameSizeHugeBtn *Button = NewButton("huge", 282, 120, 70, 30, rl.White, rl.Gold)
 
 var bombAmount10Btn *Button = NewButton("10%", 42, 240, 70, 30, rl.White, rl.Gold)
-var bombAmount20Btn *Button = NewButton("20%", 122, 240, 70, 30, rl.White, rl.Gold)
-var bombAmount30Btn *Button = NewButton("30%", 202, 240, 70, 30, rl.White, rl.Gold)
-var bombAmount40Btn *Button = NewButton("40%", 282, 240, 70, 30, rl.White, rl.Gold)
+var bombAmount15Btn *Button = NewButton("15%", 122, 240, 70, 30, rl.White, rl.Gold)
+var bombAmount20Btn *Button = NewButton("20%", 202, 240, 70, 30, rl.White, rl.Gold)
+var bombAmount25Btn *Button = NewButton("25%", 282, 240, 70, 30, rl.White, rl.Gold)
 
-var bombAmount45Btn *Button = NewButton("45%", 42, 280, 70, 30, rl.White, rl.Gold)
-var bombAmount50Btn *Button = NewButton("50%", 122, 280, 70, 30, rl.White, rl.Gold)
-var bombAmount55Btn *Button = NewButton("55%", 202, 280, 70, 30, rl.White, rl.Gold)
-var bombAmount60Btn *Button = NewButton("60%", 282, 280, 70, 30, rl.White, rl.Gold)
+var bombAmount30Btn *Button = NewButton("30%", 42, 280, 70, 30, rl.White, rl.Gold)
+var bombAmount35Btn *Button = NewButton("35%", 122, 280, 70, 30, rl.White, rl.Gold)
+var bombAmount40Btn *Button = NewButton("40%", 202, 280, 70, 30, rl.White, rl.Gold)
+var bombAmount45Btn *Button = NewButton("45%", 282, 280, 70, 30, rl.White, rl.Gold)
 
 var startNewGameBtn *Button = NewButton("Go", 160, 350, 70, 30, rl.White, rl.Gold)
 
 func main() {
-	rl.InitWindow(800, 450, "MineCreeper v1.0.1")
+	rl.InitWindow(800, 450, "MineCreeper v1.0.2")
 	rl.SetTargetFPS(20)
 	loadAssets()
 	gameSizeSmallBtn.Selected = true
@@ -129,93 +129,93 @@ func main() {
 			// Board size
 			rl.DrawText("Creeper amount:", 20, 200, 22, rl.Gold)
 			bombAmount10Btn.Draw()
+			bombAmount15Btn.Draw()
 			bombAmount20Btn.Draw()
+			bombAmount25Btn.Draw()
 			bombAmount30Btn.Draw()
+			bombAmount35Btn.Draw()
 			bombAmount40Btn.Draw()
 			bombAmount45Btn.Draw()
-			bombAmount50Btn.Draw()
-			bombAmount55Btn.Draw()
-			bombAmount60Btn.Draw()
 
 			if bombAmount10Btn.Pressed() {
 				bombAmount10Btn.Selected = true
+				bombAmount15Btn.Selected = false
 				bombAmount20Btn.Selected = false
+				bombAmount25Btn.Selected = false
 				bombAmount30Btn.Selected = false
+				bombAmount35Btn.Selected = false
 				bombAmount40Btn.Selected = false
 				bombAmount45Btn.Selected = false
-				bombAmount50Btn.Selected = false
-				bombAmount55Btn.Selected = false
-				bombAmount60Btn.Selected = false
+			}
+			if bombAmount15Btn.Pressed() {
+				bombAmount10Btn.Selected = false
+				bombAmount15Btn.Selected = true
+				bombAmount20Btn.Selected = false
+				bombAmount25Btn.Selected = false
+				bombAmount30Btn.Selected = false
+				bombAmount35Btn.Selected = false
+				bombAmount40Btn.Selected = false
+				bombAmount45Btn.Selected = false
 			}
 			if bombAmount20Btn.Pressed() {
 				bombAmount10Btn.Selected = false
+				bombAmount15Btn.Selected = false
 				bombAmount20Btn.Selected = true
+				bombAmount25Btn.Selected = false
 				bombAmount30Btn.Selected = false
+				bombAmount35Btn.Selected = false
 				bombAmount40Btn.Selected = false
 				bombAmount45Btn.Selected = false
-				bombAmount50Btn.Selected = false
-				bombAmount55Btn.Selected = false
-				bombAmount60Btn.Selected = false
+			}
+			if bombAmount25Btn.Pressed() {
+				bombAmount10Btn.Selected = false
+				bombAmount15Btn.Selected = false
+				bombAmount20Btn.Selected = false
+				bombAmount25Btn.Selected = true
+				bombAmount30Btn.Selected = false
+				bombAmount35Btn.Selected = false
+				bombAmount40Btn.Selected = false
+				bombAmount45Btn.Selected = false
 			}
 			if bombAmount30Btn.Pressed() {
 				bombAmount10Btn.Selected = false
+				bombAmount15Btn.Selected = false
 				bombAmount20Btn.Selected = false
+				bombAmount25Btn.Selected = false
 				bombAmount30Btn.Selected = true
+				bombAmount35Btn.Selected = false
 				bombAmount40Btn.Selected = false
 				bombAmount45Btn.Selected = false
-				bombAmount50Btn.Selected = false
-				bombAmount55Btn.Selected = false
-				bombAmount60Btn.Selected = false
+			}
+			if bombAmount35Btn.Pressed() {
+				bombAmount10Btn.Selected = false
+				bombAmount15Btn.Selected = false
+				bombAmount20Btn.Selected = false
+				bombAmount25Btn.Selected = false
+				bombAmount30Btn.Selected = false
+				bombAmount35Btn.Selected = true
+				bombAmount40Btn.Selected = false
+				bombAmount45Btn.Selected = false
 			}
 			if bombAmount40Btn.Pressed() {
 				bombAmount10Btn.Selected = false
+				bombAmount15Btn.Selected = false
 				bombAmount20Btn.Selected = false
+				bombAmount25Btn.Selected = false
 				bombAmount30Btn.Selected = false
+				bombAmount35Btn.Selected = false
 				bombAmount40Btn.Selected = true
 				bombAmount45Btn.Selected = false
-				bombAmount50Btn.Selected = false
-				bombAmount55Btn.Selected = false
-				bombAmount60Btn.Selected = false
 			}
 			if bombAmount45Btn.Pressed() {
 				bombAmount10Btn.Selected = false
+				bombAmount15Btn.Selected = false
 				bombAmount20Btn.Selected = false
+				bombAmount25Btn.Selected = false
 				bombAmount30Btn.Selected = false
+				bombAmount35Btn.Selected = false
 				bombAmount40Btn.Selected = false
 				bombAmount45Btn.Selected = true
-				bombAmount50Btn.Selected = false
-				bombAmount55Btn.Selected = false
-				bombAmount60Btn.Selected = false
-			}
-			if bombAmount50Btn.Pressed() {
-				bombAmount10Btn.Selected = false
-				bombAmount20Btn.Selected = false
-				bombAmount30Btn.Selected = false
-				bombAmount40Btn.Selected = false
-				bombAmount45Btn.Selected = false
-				bombAmount50Btn.Selected = true
-				bombAmount55Btn.Selected = false
-				bombAmount60Btn.Selected = false
-			}
-			if bombAmount55Btn.Pressed() {
-				bombAmount10Btn.Selected = false
-				bombAmount20Btn.Selected = false
-				bombAmount30Btn.Selected = false
-				bombAmount40Btn.Selected = false
-				bombAmount45Btn.Selected = false
-				bombAmount50Btn.Selected = false
-				bombAmount55Btn.Selected = true
-				bombAmount60Btn.Selected = false
-			}
-			if bombAmount60Btn.Pressed() {
-				bombAmount10Btn.Selected = false
-				bombAmount20Btn.Selected = false
-				bombAmount30Btn.Selected = false
-				bombAmount40Btn.Selected = false
-				bombAmount45Btn.Selected = false
-				bombAmount50Btn.Selected = false
-				bombAmount55Btn.Selected = false
-				bombAmount60Btn.Selected = true
 			}
 
 			startNewGameBtn.Draw()
@@ -284,20 +284,20 @@ func createNewBoard() *Board {
 
 	if bombAmount10Btn.Selected {
 		bombAmount = int(float32(boardWidth*boardHeight) * 0.10)
+	} else if bombAmount15Btn.Selected {
+		bombAmount = int(float32(boardWidth*boardHeight) * 0.15)
 	} else if bombAmount20Btn.Selected {
 		bombAmount = int(float32(boardWidth*boardHeight) * 0.20)
+	} else if bombAmount25Btn.Selected {
+		bombAmount = int(float32(boardWidth*boardHeight) * 0.25)
 	} else if bombAmount30Btn.Selected {
 		bombAmount = int(float32(boardWidth*boardHeight) * 0.30)
+	} else if bombAmount35Btn.Selected {
+		bombAmount = int(float32(boardWidth*boardHeight) * 0.35)
 	} else if bombAmount40Btn.Selected {
 		bombAmount = int(float32(boardWidth*boardHeight) * 0.40)
 	} else if bombAmount45Btn.Selected {
 		bombAmount = int(float32(boardWidth*boardHeight) * 0.45)
-	} else if bombAmount50Btn.Selected {
-		bombAmount = int(float32(boardWidth*boardHeight) * 0.50)
-	} else if bombAmount55Btn.Selected {
-		bombAmount = int(float32(boardWidth*boardHeight) * 0.55)
-	} else if bombAmount60Btn.Selected {
-		bombAmount = int(float32(boardWidth*boardHeight) * 0.60)
 	}
 
 	gameState = GAMESTATE_IN_PROGRESS
