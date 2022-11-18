@@ -99,7 +99,11 @@ func (b *Board) update() {
 		} else if b.cellStates[cellIdx] == CELL_FLAGGED {
 			b.cellStates[cellIdx] = CELL_HIDDEN
 		}
+		if b.isGameWon() {
+			gameState = GAMESTATE_GAME_WON
+		}
 	}
+
 }
 
 func (b *Board) isGameWon() bool {
@@ -109,7 +113,15 @@ func (b *Board) isGameWon() bool {
 			numUnrevealedCells++
 		}
 	}
-	return numUnrevealedCells == b.numBombs
+
+	bombCells := b.getBombCells()
+	numBombsFlagged := 0
+	for j := 0; j < len(bombCells); j++ {
+		if b.cellStates[bombCells[j]] == CELL_FLAGGED {
+			numBombsFlagged++
+		}
+	}
+	return (numUnrevealedCells == b.numBombs) || (numBombsFlagged == b.numBombs && b.getNumFlaggedCells() == b.numBombs)
 }
 
 func (b *Board) draw() {
@@ -137,7 +149,11 @@ func (b *Board) draw() {
 					}
 				}
 			} else if b.cellStates[idx] == CELL_FLAGGED {
-				rl.DrawTexture(trapBlock, int32(x*b.cellSize+b.xOffset), int32(y*b.cellSize+b.yOffset), rl.NewColor(200, 200, 200, 200))
+				if b.cells[idx] == b.bombCell && (gameState == GAMESTATE_GAME_WON || gameState == GAMESTATE_GAME_OVER) {
+					rl.DrawTexture(bombBlock, int32(x*b.cellSize+b.xOffset), int32(y*b.cellSize+b.yOffset), rl.NewColor(200, 200, 200, 200))
+				} else {
+					rl.DrawTexture(trapBlock, int32(x*b.cellSize+b.xOffset), int32(y*b.cellSize+b.yOffset), rl.NewColor(200, 200, 200, 200))
+				}
 			} else if b.cellStates[idx] == CELL_REVEALED {
 				if idx < b.width {
 					rl.DrawTexture(grassBlock, int32(x*b.cellSize+b.xOffset), int32(y*b.cellSize+b.yOffset), rl.NewColor(100, 100, 100, 200))
@@ -216,6 +232,16 @@ func (b *Board) getNumFlaggedCells() int {
 		}
 	}
 	return numFlaggedCells
+}
+
+func (b *Board) getBombCells() []int {
+	var bombCells = make([]int, 0)
+	for i := 0; i < len(b.cells); i++ {
+		if b.cells[i] == b.bombCell {
+			bombCells = append(bombCells, i)
+		}
+	}
+	return bombCells
 }
 
 func (b *Board) getNeighbors(cellIdx int) []int {
